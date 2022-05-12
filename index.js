@@ -3,6 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 // const mongoose = require('mongoose')
 require('dotenv').config();
+const router = express()
 
 // Express APIs
 const api = require('./routes/pregnancy.routes')
@@ -17,23 +18,22 @@ const api = require('./routes/pregnancy.routes')
 //   })
 
 // Express settings
-const app = express()
-app.use(bodyParser.json())
-app.use(
+router.use(bodyParser.json())
+router.use(
   bodyParser.urlencoded({
     extended: false,
   }),
 )
-app.use(cors())
+router.use(cors())
 
 // Serve static resources
 // app.use('/public', express.static('public'))
-app.use('/api', api)
+router.use('/api', api)
 
 // Define PORT
 const port = process.env.PORT || 4000
 
-const server = app.listen(port, () => {
+const server = router.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
@@ -45,7 +45,7 @@ const server = app.listen(port, () => {
  
 // })
 
-app.use(function (err, req, res, next) {
+router.use(function (err, req, res, next) {
   console.error(err.message)
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
