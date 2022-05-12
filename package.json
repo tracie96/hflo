@@ -1,0 +1,20 @@
+{
+  "name": "hflo",
+  "version": "1.0.0",
+  "description": "A pregnancy tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "keywords": [
+    "pregnancy"
+  ],
+  "author": "Tracy",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "http-status": "^1.5.2"
+  }
+}
