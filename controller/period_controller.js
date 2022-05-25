@@ -42,7 +42,7 @@ exports.getCycleInfo = async (req, res, next) => {
   try {
     const { lmpp, cycle, periodLen } = req.body;
     console.log(lmpp);
-    const cycleLen = parseInt(cycle);
+    const cycleLen = parseInt(periodLen);
     //date
     const newdate = new Date(lmpp);
     const lmp = new Date(newdate);
@@ -54,7 +54,7 @@ exports.getCycleInfo = async (req, res, next) => {
     };
 
     //periodLen
-    const period = parseInt(periodLen);
+    const period = parseInt(cycle);
     const getNeutralDays = new Array(90).fill(1).map((day, dayCount) => {
       lmp.setDate(lmp.getDate());
 
