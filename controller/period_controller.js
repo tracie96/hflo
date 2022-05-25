@@ -41,7 +41,7 @@ const getOvulationData = (lastPeriodOvulation, cycle) => {
 exports.getCycleInfo = async (req, res, next) => {
   try {
     const { lmpp, cycle, periodLen } = req.body;
-
+    console.log(lmpp);
     const cycleLen = parseInt(cycle);
     //date
     const newdate = new Date(lmpp);
@@ -115,87 +115,95 @@ exports.getCycleInfo = async (req, res, next) => {
           let startfollicle;
           let endfollicle;
           let titleType = getType(dayCount + 1, period, cycleLen).title;
-          console.log(cycle, titleType);
           switch (titleType) {
             case "Menstrual":
-              console.log("yes");
+              console.log("M");
               if (cycle.day >= 1 && cycle.day <= 5) {
-                const startdate = new Date(newdate.toISOString().substr(0, 10));
+                //clear
+                const startdate = new Date(
+                  newdate.addDays(1).toISOString().substr(0, 10)
+                );
                 const enddate = new Date(
-                  newdate.addDays(5).toISOString().substr(0, 10)
+                  newdate.addDays(6).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
               } else if (cycle.day >= 29 && cycle.day <= 33) {
                 const startdate = new Date(
-                  newdate.addDays(29).toISOString().substr(0, 10)
+                  newdate.addDays(30).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(33).toISOString().substr(0, 10)
+                  newdate.addDays(34).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
               } else if (cycle.day >= 57 && cycle.day <= 61) {
                 const startdate = new Date(
-                  newdate.addDays(57).toISOString().substr(0, 10)
+                  newdate.addDays(58).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(61).toISOString().substr(0, 10)
+                  newdate.addDays(62).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
-              } else if (cycle.day >= 86 && cycle.day <= 90) {
+              } else if (cycle.day >= 85 && cycle.day <= 90) {
                 const startdate = new Date(
                   newdate.addDays(86).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(90).toISOString().substr(0, 10)
+                  newdate.addDays(91).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
               }
               break;
             case "Follicular":
-              console.log("folliclar");
+              console.log("F");
               if (cycle.day >= 6 && cycle.day <= 13) {
                 const startdate = new Date(
-                  newdate.addDays(6).toISOString().substr(0, 10)
+                  newdate.addDays(7).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(13).toISOString().substr(0, 10)
+                  newdate.addDays(14).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
-              } else if (cycle.day >= 34 && cycle.day <= 40) {
+              } else if (cycle.day >= 34 && cycle.day <= 41) {
                 const startdate = new Date(
-                  newdate.addDays(34).toISOString().substr(0, 10)
+                  newdate.addDays(35).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(40).toISOString().substr(0, 10)
+                  newdate.addDays(42).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
-              } else if (cycle.day >= 62 && cycle.day <= 68) {
+              } else if (cycle.day >= 62 && cycle.day <= 69) {
                 const startdate = new Date(
-                  newdate.addDays(62).toISOString().substr(0, 10)
+                  newdate.addDays(63).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(68).toISOString().substr(0, 10)
+                  newdate.addDays(69).toISOString().substr(0, 10)
+                );
+                startfollicle = new Date(startdate).toISOString().substr(0, 10);
+                endfollicle = new Date(enddate).toISOString().substr(0, 10);
+              } else if (cycle.day == 90) {
+                const startdate = new Date(
+                  newdate.addDays(91).toISOString().substr(0, 10)
+                );
+                const enddate = new Date(
+                  newdate.addDays(94).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
               }
-
               break;
             case "Ovulation":
-              console.log("Ovulation");
-
               if (cycle.day >= 14 && cycle.day <= 18) {
                 const startdate = new Date(
                   newdate.addDays(14).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(18).toISOString().substr(0, 10)
+                  newdate.addDays(19).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
@@ -204,7 +212,7 @@ exports.getCycleInfo = async (req, res, next) => {
                   newdate.addDays(42).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(46).toISOString().substr(0, 10)
+                  newdate.addDays(47).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
@@ -213,97 +221,57 @@ exports.getCycleInfo = async (req, res, next) => {
                   newdate.addDays(70).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(74).toISOString().substr(0, 10)
+                  newdate.addDays(75).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
               }
 
               break;
-              case "Luteal":
-                console.log("Luteal");
-  
-                if (cycle.day >= 19 && cycle.day <= 28) {
-                  const startdate = new Date(
-                    newdate.addDays(19).toISOString().substr(0, 10)
-                  );
-                  const enddate = new Date(
-                    newdate.addDays(28).toISOString().substr(0, 10)
-                  );
-                  startfollicle = new Date(startdate).toISOString().substr(0, 10);
-                  endfollicle = new Date(enddate).toISOString().substr(0, 10);
-                } else if (cycle.day >= 47 && cycle.day <= 56) {
-                  const startdate = new Date(
-                    newdate.addDays(47).toISOString().substr(0, 10)
-                  );
-                  const enddate = new Date(
-                    newdate.addDays(56).toISOString().substr(0, 10)
-                  );
-                  startfollicle = new Date(startdate).toISOString().substr(0, 10);
-                  endfollicle = new Date(enddate).toISOString().substr(0, 10);
-                } else if (cycle.day >= 75 && cycle.day <= 84) {
-                  const startdate = new Date(
-                    newdate.addDays(75).toISOString().substr(0, 10)
-                  );
-                  const enddate = new Date(
-                    newdate.addDays(84).toISOString().substr(0, 10)
-                  );
-                  startfollicle = new Date(startdate).toISOString().substr(0, 10);
-                  endfollicle = new Date(enddate).toISOString().substr(0, 10);
-                }
-  
-                break;
+            case "Luteal":
+              console.log("L");
+
+              if (cycle.day >= 19 && cycle.day <= 28) {
+                const startdate = new Date(
+                  newdate.addDays(20).toISOString().substr(0, 10)
+                );
+                const enddate = new Date(
+                  newdate.addDays(29).toISOString().substr(0, 10)
+                );
+                startfollicle = new Date(startdate).toISOString().substr(0, 10);
+                endfollicle = new Date(enddate).toISOString().substr(0, 10);
+              } else if (cycle.day >= 47 && cycle.day <= 56) {
+                const startdate = new Date(
+                  newdate.addDays(48).toISOString().substr(0, 10)
+                );
+                const enddate = new Date(
+                  newdate.addDays(57).toISOString().substr(0, 10)
+                );
+                startfollicle = new Date(startdate).toISOString().substr(0, 10);
+                endfollicle = new Date(enddate).toISOString().substr(0, 10);
+              } else if (cycle.day >= 75 && cycle.day <= 84) {
+                const startdate = new Date(
+                  newdate.addDays(76).toISOString().substr(0, 10)
+                );
+                const enddate = new Date(
+                  newdate.addDays(85).toISOString().substr(0, 10)
+                );
+                startfollicle = new Date(startdate).toISOString().substr(0, 10);
+                endfollicle = new Date(enddate).toISOString().substr(0, 10);
+              }
+
+              break;
 
             default:
 
             // code block
           }
 
-          // const isFollicle =
-          //   getType(dayCount + 1, period, cycleLen).title === "Follicular";
-          // if (isFollicle) {
-          //   console.log(cycle.day);
-          //   if (cycle.day >= 6 && cycle.day <= 13) {
-          //     const startdate = new Date(
-          //       newdate.addDays(6).toISOString().substr(0, 10)
-          //     );
-          //     const enddate = new Date(
-          //       newdate.addDays(13).toISOString().substr(0, 10)
-          //     );
-          //     startfollicle = new Date(startdate).toISOString().substr(0, 10);
-          //     endfollicle = new Date(enddate).toISOString().substr(0, 10);
-          //   } else if (cycle.day >= 34 && cycle.day <= 40) {
-          //     const startdate = new Date(
-          //       newdate.addDays(34).toISOString().substr(0, 10)
-          //     );
-          //     const enddate = new Date(
-          //       newdate.addDays(40).toISOString().substr(0, 10)
-          //     );
-          //     startfollicle = new Date(startdate).toISOString().substr(0, 10);
-          //     endfollicle = new Date(enddate).toISOString().substr(0, 10);
-          //   } else if (cycle.day >= 62 && cycle.day <= 68) {
-          //     const startdate = new Date(
-          //       newdate.addDays(62).toISOString().substr(0, 10)
-          //     );
-          //     const enddate = new Date(
-          //       newdate.addDays(68).toISOString().substr(0, 10)
-          //     );
-          //     startfollicle = new Date(startdate).toISOString().substr(0, 10);
-          //     endfollicle = new Date(enddate).toISOString().substr(0, 10);
-          //   }
-          // }
-
-          // const isMenstrual =
-          // getType(dayCount + 1, period, cycleLen).title === "Menstrual";
-
+        
           return {
-            ...cycle,
-            day: dayCount + 1,
+            title: getType(dayCount + 1, period, cycleLen).title,
             start: startfollicle,
             end: endfollicle,
-            // chances: getType(dayCount + 1, period, cycleLen).chances,
-            title: getType(dayCount + 1, period, cycleLen).title,
-            isFertile: getType(dayCount + 1, period, cycleLen).isFertile,
           };
         })
       )
