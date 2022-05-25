@@ -121,7 +121,7 @@ exports.getCycleInfo = async (req, res, next) => {
               if (cycle.day >= 1 && cycle.day <= 5) {
                 //clear
                 const startdate = new Date(
-                  newdate.addDays(1).toISOString().substr(0, 10)
+                  newdate.addDays(0).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
                   newdate.addDays(6).toISOString().substr(0, 10)
