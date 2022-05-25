@@ -42,7 +42,7 @@ exports.getCycleInfo = async (req, res, next) => {
   try {
     const { lmpp, cycle, periodLen } = req.body;
     console.log(lmpp);
-    const cycleLen = parseInt(cycle);
+    const cycleLen = 28;
     //date
     const newdate = new Date(lmpp);
     const lmp = new Date(newdate);
