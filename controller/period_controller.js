@@ -124,7 +124,7 @@ exports.getCycleInfo = async (req, res, next) => {
                   newdate.addDays(0).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(4).toISOString().substr(0, 10)
+                  newdate.addDays(5).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
