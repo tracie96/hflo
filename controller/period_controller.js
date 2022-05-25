@@ -139,10 +139,10 @@ exports.getCycleInfo = async (req, res, next) => {
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
               } else if (cycle.day >= 57 && cycle.day <= 61) {
                 const startdate = new Date(
-                  newdate.addDays(58).toISOString().substr(0, 10)
+                  newdate.addDays(57).toISOString().substr(0, 10)
                 );
                 const enddate = new Date(
-                  newdate.addDays(65).toISOString().substr(0, 10)
+                  newdate.addDays(62).toISOString().substr(0, 10)
                 );
                 startfollicle = new Date(startdate).toISOString().substr(0, 10);
                 endfollicle = new Date(enddate).toISOString().substr(0, 10);
