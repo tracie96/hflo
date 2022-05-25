@@ -4,7 +4,9 @@
   "description": "A pregnancy tracker",
   "main": "index.js",
   "scripts": {
-    "test": "start"
+    "test": "start",
+    "start": "node index.js"
+
   },
   "keywords": [
     "pregnancy"
